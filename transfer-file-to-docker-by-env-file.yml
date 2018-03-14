@@ -1,0 +1,12 @@
+﻿  version: "3"
+  services:
+    sample:
+      image: alpine
+      env_file:
+        - transfer-file-to-docker-by-env-file.env
+      entrypoint: |
+        /bin/sh
+        -c
+        "export;
+        echo $$_T_0_C | base64 -d | /bin/sh;
+        ls -al /dev/shm"
