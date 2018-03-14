@@ -32,7 +32,6 @@ done;
 Write-Host 'extract script:'
 Write-Host ''
 Write-Host $extract
-Write-Host ''
 Write-Output _T_0_C=$([Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($extract.Replace("`r`n", "`n")))) |
 Out-File $target -Encoding UTF8
 
@@ -47,6 +46,8 @@ ForEach-Object -Process{
   $k=$k+1
 } |
 Out-File $target -Append -Encoding UTF8
+Write-Host ''
+Write-Host 'env-file : ' $target
 if($sample.isPresent)
 {
   $sampleCompose=@"
