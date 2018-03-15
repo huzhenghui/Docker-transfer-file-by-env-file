@@ -15,8 +15,9 @@ if ([string]::IsNullOrEmpty($sourcePath))
 }
 if ([string]::IsNullOrEmpty($target))
 {
-  $target = -Join((Get-Location).Path, '\transfer-file-to-docker-by-env-file.env')
+  $target = '.\transfer-file-to-docker-by-env-file.env'
 }
+$target = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($target)
 $extract=@'
 k=1
 while true; do
